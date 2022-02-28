@@ -1,0 +1,7 @@
+.table thead tr th, .table tbody tr td {
+    border: none;
+}
+
+.no-borders{
+    border:none;
+}

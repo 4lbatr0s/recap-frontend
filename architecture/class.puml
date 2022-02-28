@@ -1,0 +1,9 @@
+@startuml
+Title: Tweet
+
+class User {
+    name : string
+}
+
+
+@enduml

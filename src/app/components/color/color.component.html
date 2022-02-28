@@ -1,0 +1,12 @@
+<ul class="list-group">
+    <br>
+    <li routerLink="/cars"
+    [class] = "getAllCars()"
+    (click) = "setCurrentColorNull()"
+    >All Colors</li>
+    <li *ngFor = "let color of colors"
+    routerLink="/cars/color/{{color.colorId}}"
+    (click) = "setCurrentColor(color)"  
+    [class] = "getCurrentColor(color)">{{color.colorName}}</li>
+</ul>
+<h5 *ngIf = "currentColor">{{currentColor.colorName}} seçtiniz</h5> <!--*ngIf="currentBrand" means: if there is a currentBrand value.. it is not undefined.--> 

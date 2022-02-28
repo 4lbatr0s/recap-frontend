@@ -1,0 +1,21 @@
+<div *ngIf = "dataLoaded == false" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<div class="card" *ngIf = "dataLoaded">
+    <div class="card-image">
+      <figure class="image is-4by2">
+        <img (click) = "changeImage()" 
+        src= "{{carDetail.imagePaths[imagePathCounter].imagePath}}"
+        class = "img" alt="Placeholder image">
+      </figure>
+    </div>
+    <div class="card-content">
+        <div class="media-content">
+          <p class="title is-6">Car Brand: {{carDetail.brandName}}</p>
+          <p class="title is-6">Description: {{carDetail.description}}</p>
+          <p class="title is-6">Color: {{carDetail.colorName}}</p>
+          <p class="title is-6">Model: {{carDetail.modelYear}}</p>
+          <p class="title is-6">Price: {{carDetail.dailyPrice}}</p>
+        </div>
+    </div>
+</div>
