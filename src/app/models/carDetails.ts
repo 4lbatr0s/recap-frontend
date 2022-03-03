@@ -1,6 +1,4 @@
-import { Car } from "./car";
 import { CarImage } from "./carImage";
-import { ResponseModel } from "./ResponseModel";
 
 export interface CarDetails{
     carId:string;
@@ -10,4 +8,6 @@ export interface CarDetails{
     dailyPrice:number;
     description:string;
     imagePaths:CarImage[];
+    brandId:string;
+    colorId:string;
 }

@@ -1,17 +1,19 @@
 <div *ngIf = "dataLoaded == false" class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
-<table *ngIf = "dataLoaded == true" class = "table" >
-    <thead class = "table">
+<table *ngIf = "dataLoaded == true" class = "table table-borderless" >
+    <thead class = "table table-borderless">
         <tr>
             <td>Car Name</td>
         </tr>
     </thead>
     <tr *ngFor= "let car of cars">
-        <td>{{car.brandName + " " + car.description}}</td>
-        <button type="button" class="btn btn-primary"
+        <td class = "table-borderless col-md-9">{{car.brandName + " " + car.description}}</td>
+        <td class ="col-md-3"> <img src="{{setImageView(car.imagePaths[0].imagePath)}}" alt=""></td>
+        <button type="button" class="btn btn-primary car-names"
         routerLink="/cars/{{car.carId}}"
         >See Details</button>
+        <br>
     </tr>
 </table>
 
