@@ -3,6 +3,9 @@
     [class] = "getAllCars()"
     (click) = "setCurrentBrandNull()"
     >All Brands</li>
+    <li>
+        
+    </li>
     <li *ngFor = "let brand of brands"
     routerLink="/cars/brand/{{brand.brandId}}"
     (click) = "setCurrentBrand(brand)"  

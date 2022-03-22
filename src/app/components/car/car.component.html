@@ -1,39 +1,47 @@
 <div *ngIf = "dataLoaded == false" class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
-<table *ngIf = "dataLoaded == true" class = "table table-borderless" >
-    <thead class = "table table-borderless">
-        <tr>
-            <td>Car Name</td>
+<div class = "form-group row" *ngIf = "dataLoaded == true">
+  <div class="col-md-4">
+    <label for="exampleFormControlInput1" class="form-label"></label>
+    <input type="text" [(ngModel)] = "carFilterText" class="form-control" id="filter-text" placeholder="Enter a car name">
+  </div>
+    <div class="col-sm-2">
+      <select  [(ngModel)]="brandId" class=" form-select" aria-label="Default select example">
+        <option selected value="null" hidden>Choose brand</option>
+        <option *ngFor="let brand of brands" value="{{brand.brandId}}">{{brand.brandName | uppercase}}</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <select  [(ngModel)]="colorId" class=" form-select" aria-label="Default select example">
+        <option selected value="null" hidden>Choose color</option>
+        <option *ngFor="let color of colors" value="{{color.colorId}}">{{color.colorName | uppercase}}</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <button (click)="getCarsWithBrandAndColor()" class=" btn btn-primary">Filtrele</button>
+    </div>       
+ 
+  <div  *ngIf = "carFilterText.length>2" class = "alert alert-success">
+      {{carFilterText}} aradiniz.
+  </div>
+  <table  class = "table table-borderless" > 
+    <thead >
+          <tr>
+              <td>Car Name</td>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor= "let car of cars | carFilter:carFilterText">
+          <td class = "table-borderless col-md-9">{{car.brandName + " " + car.description}}</td>
+          <td class ="col-md-3"> <img src="{{setImageView(car.imagePaths[0].imagePath)}}" alt=""></td>
+          <td><button type="button" class="btn btn-primary btn-xs"
+            routerLink="/cars/{{car.carId}}"
+            >See Details</button>
+          </td>
         </tr>
-    </thead>
-    <tr *ngFor= "let car of cars">
-        <td class = "table-borderless col-md-9">{{car.brandName + " " + car.description}}</td>
-        <td class ="col-md-3"> <img src="{{setImageView(car.imagePaths[0].imagePath)}}" alt=""></td>
-        <button type="button" class="btn btn-primary car-names"
-        routerLink="/cars/{{car.carId}}"
-        >See Details</button>
-        <br>
-    </tr>
-</table>
+      </tbody>
+  </table>
+</div>
 
-<!-- <mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let car of cars" [value]="car">
-      {{car.}}
-    </mat-list-option>
-  </mat-selection-list>
-  
-  <p>
-    Option selected: {{shoes.selectedOptions.selected[0]?.value}}
-  </p> -->
 
-<!-- 
-<mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
-      {{shoe}}
-    </mat-list-option>
-  </mat-selection-list>
-  
-  <p>
-    Option selected: {{shoes.selectedOptions.selected[0]?.value}}
-  </p> -->

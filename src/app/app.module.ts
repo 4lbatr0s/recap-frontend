@@ -14,6 +14,10 @@ import { RouterModule, Routes} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
+import { CarFilterPipe } from './pipes/car-filter.pipe';
+import { FormsModule } from '@angular/forms';
+import { ColorPipe } from './pipes/color.pipe';
+import { BrandPipe } from './pipes/brand.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { CarDetailsComponent } from './components/car-details/car-details.compon
     RentalComponent,
     NaviComponent,
     CarDetailsComponent,
+    CarFilterPipe,
+    ColorPipe,
+    BrandPipe,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,8 @@ import { CarDetailsComponent } from './components/car-details/car-details.compon
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
